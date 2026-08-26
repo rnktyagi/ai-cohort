@@ -1,0 +1,13 @@
+Claims Process Guide
+SYNTHETIC SAMPLE — FOR TESTING / DEMONSTRATION ONLY
+How to File a Claim
+Collect the provider bill, receipt, treatment date, procedure details, and member information.
+Confirm that the claim information matches your coverage and provider records.
+Submit the claim through the designated claims portal or approved paper process.
+Keep a copy of the submitted documents and note the submission date.
+Review the claim status periodically. Typical statuses include Pending, Approved, and Denied.
+Claim Review
+The claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.
+If a Claim Is Denied
+Review the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.
+This synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.
