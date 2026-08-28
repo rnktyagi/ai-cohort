@@ -131,25 +131,3 @@ def retrieve(question):
     context = "\n\n".join(unique_results)
 
     return context
-
-questions = [
-    "What's my deductible?",
-    "What is the deductible for each plan?",
-    "What is the monthly premium?",
-    "What is the premium for each plan?",
-    "Is maternity care covered?",
-    "Is physical therapy covered?",
-    "Is emergency care covered?",
-    "What procedures are excluded from coverage?",
-    "What benefits are covered by the plan?",
-    "Is maternity care covered and what is the deductible?",
-]
-
-for i, question in enumerate(questions, 1):
-    print(f"\n{'=' * 60}")
-    print(f"Question {i}: {question}")
-
-    context = retrieve(question)
-
-    print("Context:")
-    print(context)
