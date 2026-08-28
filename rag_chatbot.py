@@ -10,7 +10,7 @@ client = OpenAI(
     api_key=os.environ["GROQ_API_KEY"]
 )
 
-def generate_answer(question, context):
+def generate_answer(question, context, chunk_ids):
     prompt = f"""
 Answer using ONLY the context below.
 If the answer isn't in the context, say you don't know and suggest the member contact support.
@@ -20,6 +20,7 @@ Context: {context}
 
 Question: {question}
 """
+
     response = client.chat.completions.create(
         model="openai/gpt-oss-20b",
         messages=[
@@ -32,11 +33,16 @@ Question: {question}
         stream=True
     )
 
+    answer = ""
+
     for chunk in response:
         token = chunk.choices[0].delta.content
 
         if token:
+            answer += token
             yield token
+
+    return chunk_ids
 
 def retrieve_and_answer(question):
     context = retrieve(question)

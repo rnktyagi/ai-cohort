@@ -34,6 +34,11 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+        if message["role"] == "assistant" and message.get("chunk_ids"):
+            with st.expander("Policy sources"):
+                for chunk_id in message["chunk_ids"]:
+                    st.write(f"- {chunk_id}")
+
 prompt = st.chat_input("Ask a question :")
 
 if prompt:
@@ -48,6 +53,7 @@ if prompt:
     with st.chat_message("assistant"):
         placeholder = st.empty()
         answer = ""
+        chunk_ids = []
 
         try:
             with st.spinner("Thinking..."):
@@ -88,5 +94,6 @@ if prompt:
 
     st.session_state.messages.append({
         "role": "assistant",
-        "content": answer
+        "content": answer,
+        "chunk_ids": chunk_ids
     })
