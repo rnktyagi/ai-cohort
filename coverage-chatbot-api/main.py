@@ -1,6 +1,6 @@
 from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-
 from retrieval_engine import retrieve
 from rag_chatbot import generate_answer
 
@@ -32,30 +32,38 @@ def chat(request: ChatRequest):
         "content": request.message
     })
 
-    context = retrieve(request.message)
-
     try:
-        answer = generate_answer(request.message, context)
-        
+        context = retrieve(request.message)
+
+        def stream():
+            answer = ""
+
+            for token in generate_answer(request.message, context):
+                answer += token
+                yield f"data: {token}\n\n"
+
+            session["messages"].append({
+                "role": "assistant",
+                "content": answer
+            })
+
+        return StreamingResponse(
+            stream(),
+            media_type="text/event-stream"
+        )
+
     except Exception:
-        return {"error": "Unable to generate an answer."}
-
-    session["messages"].append({
-        "role": "assistant",
-        "content": answer
-    })
-
-    return {
-        "session_id": request.session_id,
-        "member_id": request.member_id,
-        "answer": answer,
-        "conversation": session["messages"]
-    }
+        return {
+            "error": "Unable to generate an answer."
+        }
 
 @app.get("/history/{session_id}")
 def get_history(session_id: str):
     if session_id not in sessions:
-        return {"session_id": session_id, "conversation": []}
+        return {
+            "session_id": session_id,
+            "conversation": []
+        }
 
     return {
         "session_id": session_id,

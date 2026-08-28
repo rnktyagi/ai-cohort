@@ -45,24 +45,48 @@ if prompt:
     with st.chat_message("user"):
         st.write(prompt)
 
-    response = requests.post(
-        "http://127.0.0.1:8000/chat",
-        json={
-            "session_id": st.session_state.session_id,
-            "member_id": "M-1001",
-            "message": prompt
-        }
-    )
+    with st.chat_message("assistant"):
+        placeholder = st.empty()
+        answer = ""
 
-    if response.status_code == 200:
-        answer = response.json()["answer"]
-    else:
-        answer = "Unable to get a response from the server."
+        try:
+            with st.spinner("Thinking..."):
+                response = requests.post(
+                    "http://127.0.0.1:8000/chat",
+                    json={
+                        "session_id": st.session_state.session_id,
+                        "member_id": "M-1001",
+                        "message": prompt
+                    },
+                    stream=True,
+                    timeout=30
+                )
+
+                if response.status_code != 200:
+                    raise Exception("Server error")
+
+                for line in response.iter_lines():
+                    if line:
+                        line = line.decode("utf-8")
+
+                        if line.startswith("data: "):
+                            token = line[6:]
+                            answer += token
+                            placeholder.write(answer)
+
+        except requests.exceptions.Timeout:
+            answer = "The request timed out. Please try again."
+            placeholder.write(answer)
+
+        except requests.exceptions.RequestException:
+            answer = "The connection was lost. Please try again."
+            placeholder.write(answer)
+
+        except Exception:
+            answer = "Unable to generate an answer."
+            placeholder.write(answer)
 
     st.session_state.messages.append({
         "role": "assistant",
         "content": answer
     })
-
-    with st.chat_message("assistant"):
-        st.write(answer)

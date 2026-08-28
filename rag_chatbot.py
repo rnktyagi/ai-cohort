@@ -10,7 +10,6 @@ client = OpenAI(
     api_key=os.environ["GROQ_API_KEY"]
 )
 
-
 def generate_answer(question, context):
     prompt = f"""
 Answer using ONLY the context below.
@@ -21,7 +20,6 @@ Context: {context}
 
 Question: {question}
 """
-
     response = client.chat.completions.create(
         model="openai/gpt-oss-20b",
         messages=[
@@ -30,17 +28,24 @@ Question: {question}
                 "content": prompt
             }
         ],
-        temperature=0
+        temperature=0,
+        stream=True
     )
 
-    return response.choices[0].message.content
+    for chunk in response:
+        token = chunk.choices[0].delta.content
+
+        if token:
+            yield token
 
 def retrieve_and_answer(question):
-
     context = retrieve(question)
     answer = generate_answer(question, context)
 
-    return answer
+    for token in answer:
+        print(token, end="", flush=True)
+
+    print()
 
 questions = [
     "What's my deductible?",
@@ -58,8 +63,6 @@ questions = [
 for i, question in enumerate(questions, 1):
     print(f"\n{'=' * 60}")
     print(f"Question {i}: {question}")
-
-    answer = retrieve_and_answer(question)
-
     print("Answer:")
-    print(answer)
+
+    retrieve_and_answer(question)
