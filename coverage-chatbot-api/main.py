@@ -5,6 +5,7 @@ from retrieval_engine import retrieve
 from rag_chatbot import generate_answer
 from memory.memory import save_message, get_history
 from memory.token_count import count_tokens
+from guardrails_config import check_input
 
 app = FastAPI(title="FastAPI Health API")
 
@@ -21,6 +22,11 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 def chat(request: ChatRequest):
+    if not check_input(request.message):
+        return {
+            "error": "Your message contains disallowed content. Please rephrase your request."
+        }
+    
     if request.session_id not in sessions:
         sessions[request.session_id] = {
             "member_id": request.member_id,
