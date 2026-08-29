@@ -1,32 +1,55 @@
 from crewai import Agent, Task, Crew, Process, LLM
-from crewai.tools import tool
 import os
 from dotenv import load_dotenv
+from memory.memory import get_history, save_message
 
 load_dotenv()
 
-os.environ["LITELLM_DROP_PARAMS"] = "true"
+from crewai.tools import tool
+import asyncio
+from tools.mcp_client import call_mcp_tool
 
 @tool("check_coverage")
-def check_coverage(plan_id: str, procedure: str):
-    """Check whether a procedure is covered under an insurance plan."""
-    return {
-        "plan_id": plan_id,
-        "procedure": procedure,
-        "covered": True,
-        "details": f"{procedure} is covered under plan {plan_id}."
-    }
+def check_coverage_mcp(plan_id: str, procedure: str):
+    """Check coverage through the MCP server."""
+    for attempt in range(2):
+        try:
+            return asyncio.run(
+                asyncio.wait_for(
+                    call_mcp_tool(
+                        "check_coverage",
+                        {
+                            "plan_id": plan_id,
+                            "procedure": procedure
+                        }
+                    ),
+                    timeout=10
+                )
+            )
+        except Exception:
+            if attempt == 1:
+                return "I'm having trouble accessing that right now, please contact member support"
+
 
 @tool("get_claim_status")
-def get_claim_status(claim_id: str):
-    """Get the status of an insurance claim."""
-    return {
-        "claim_id": claim_id,
-        "status": "Approved",
-        "details": f"Claim {claim_id} has been approved."
-    }
-
-load_dotenv()
+def get_claim_status_mcp(claim_id: str):
+    """Get claim status through the MCP server."""
+    for attempt in range(2):
+        try:
+            return asyncio.run(
+                asyncio.wait_for(
+                    call_mcp_tool(
+                        "get_claim_status",
+                        {
+                            "claim_id": claim_id
+                        }
+                    ),
+                    timeout=10
+                )
+            )
+        except Exception:
+            if attempt == 1:
+                return "I'm having trouble accessing that right now, please contact member support"
 
 llm = LLM(
     model="groq/openai/gpt-oss-20b",
@@ -36,19 +59,19 @@ llm = LLM(
 
 coverage_specialist = Agent(
     role="Coverage Specialist",
-    goal="Answer insurance coverage questions using retrieval and coverage tools.",
+    goal="Answer insurance coverage questions using the MCP coverage tool.",
     backstory="You specialize in insurance coverage, benefits, deductibles, copays, and covered procedures.",
     llm=llm,
-    tools=[check_coverage],
+    tools=[check_coverage_mcp],
     verbose=True
 )
 
 claims_specialist = Agent(
     role="Claims Specialist",
-    goal="Answer insurance claim questions using retrieval and claim tools.",
+    goal="Answer insurance claim questions using the MCP claim tool.",
     backstory="You specialize in claim status and claim-related questions.",
     llm=llm,
-    tools=[get_claim_status],
+    tools=[get_claim_status_mcp],
     verbose=True
 )
 
