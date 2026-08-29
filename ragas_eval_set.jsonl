@@ -1,0 +1,18 @@
+{"question": "What is the annual deductible for plan GOLD?", "ideal_answer": "The annual deductible for plan GOLD is $2,000."}
+{"question": "How much is the GOLD plan deductible?", "ideal_answer": "The annual deductible for plan GOLD is $2,000."}
+{"question": "What is the primary care coverage for plan GOLD?", "ideal_answer": "Plan GOLD has primary care coverage at 10% coinsurance after the deductible is met."}
+{"question": "Is physical therapy covered under plan SILVER?", "ideal_answer": "Yes. Physical therapy is covered under the SILVER plan."}
+{"question": "Is dental surgery covered under plan SILVER?", "ideal_answer": "Yes. Dental surgery is covered under the SILVER plan."}
+{"question": "What is the status of claim CLM001?", "ideal_answer": "Claim CLM001 is approved."}
+{"question": "Has claim CLM001 been approved?", "ideal_answer": "Yes. Claim CLM001 has been approved."}
+{"question": "Can you give me the status of CLM001?", "ideal_answer": "The current status of claim CLM001 is Approved."}
+{"question": "What are the details of plan GOLD?", "ideal_answer": "Plan GOLD is the Gold PPO. Its annual deductible is $2,000, and primary care coverage is 10% coinsurance after the deductible is met."}
+{"question": "What type of plan is GOLD?", "ideal_answer": "Plan GOLD is a Gold PPO."}
+{"question": "Compare the information currently available for GOLD and SILVER.", "ideal_answer": "The available information confirms that GOLD is a Gold PPO with a $2,000 annual deductible and 10% primary care coinsurance after the deductible. The available information confirms that SILVER covers physical therapy and dental surgery. No additional comparison details are provided here."}
+{"question": "Which services are excluded from the SILVER plan?", "ideal_answer": "The available information does not specify which services are excluded from the SILVER plan."}
+{"question": "Are there any exclusions listed for plan GOLD?", "ideal_answer": "The available information provided here does not specify exclusions for plan GOLD."}
+{"question": "What is an insurance plan?", "ideal_answer": "An insurance plan is an arrangement that specifies covered services, costs such as deductibles or coinsurance, limits, exclusions, and the conditions for receiving coverage."}
+{"question": "Is physical therapy covered under GOLD?", "ideal_answer": "The available information provided here does not confirm whether physical therapy is covered under GOLD."}
+{"question": "What is the current status of claim CLM999?", "ideal_answer": "The available information does not provide the status of claim CLM999."}
+{"question": "Does the SILVER plan cover dental surgery?", "ideal_answer": "Yes. Dental surgery is covered under the SILVER plan."}
+{"question": "After what condition does GOLD primary care coverage apply at 10% coinsurance?", "ideal_answer": "The 10% primary care coinsurance for GOLD applies after the annual deductible has been met."}
