@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "coverage-assistant": {
+      "command": "C:\\Users\\window\\Desktop\\projects\\my-first-app\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\window\\Desktop\\projects\\my-first-app\\mcp_server.py"
+      ]
+    }
+  }
+}
