@@ -4,7 +4,7 @@ from sentence_transformers import SentenceTransformer
 
 DB_PATH = "coverage.db"
 
-client = chromadb.PersistentClient(path="./chroma_data")
+client = chromadb.PersistentClient(path="chroma_data")
 collection = client.get_collection("coverage_kb")
 model = SentenceTransformer("all-MiniLM-L6-v2")
 

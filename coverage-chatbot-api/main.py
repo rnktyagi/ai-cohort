@@ -4,12 +4,22 @@ from pydantic import BaseModel
 from retrieval_engine import retrieve
 from rag_chatbot import generate_answer
 from memory.memory import save_message, get_history
-from memory.token_count import count_tokens
 from guardrails_config import check_input
+from token_utils import count_tokens
+import csv
+from datetime import datetime
+import hashlib
+import re
+import time
 
 app = FastAPI(title="FastAPI Health API")
 
 sessions = {}
+cache = {}
+rate_limits = {}
+
+MAX_REQUESTS = 10
+WINDOW_SECONDS = 60
 
 @app.get("/health")
 def health():
@@ -20,13 +30,64 @@ class ChatRequest(BaseModel):
     member_id: str
     message: str
 
+def normalize_question(question):
+    return re.sub(r"\s+", " ", question.strip().lower())
+
+def get_cache_key(question):
+    normalized = normalize_question(question)
+    return hashlib.sha256(normalized.encode()).hexdigest()
+
+def check_rate_limit(member_id):
+    now = time.time()
+
+    if member_id not in rate_limits:
+        rate_limits[member_id] = []
+
+    rate_limits[member_id] = [
+        timestamp
+        for timestamp in rate_limits[member_id]
+        if now - timestamp < WINDOW_SECONDS
+    ]
+
+    if len(rate_limits[member_id]) >= MAX_REQUESTS:
+        return False
+
+    rate_limits[member_id].append(now)
+
+    return True
+
+def log_token_usage(session_id, input_tokens, output_tokens):
+    input_rate = 0.001
+    output_rate = 0.001
+
+    estimated_cost = (
+        (input_tokens / 1000) * input_rate
+        + (output_tokens / 1000) * output_rate
+    )
+
+    with open("token_usage.csv", "a", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file)
+
+        writer.writerow([
+            session_id,
+            datetime.now().isoformat(),
+            input_tokens,
+            output_tokens,
+            estimated_cost
+        ])
+
 @app.post("/chat")
 def chat(request: ChatRequest):
     if not check_input(request.message):
         return {
             "error": "Your message contains disallowed content. Please rephrase your request."
         }
-    
+
+    if not check_rate_limit(request.member_id):
+        return {
+            "error": "Too many requests. Please try again later."
+        }
+
     if request.session_id not in sessions:
         sessions[request.session_id] = {
             "member_id": request.member_id,
@@ -34,6 +95,35 @@ def chat(request: ChatRequest):
         }
 
     session = sessions[request.session_id]
+
+    cache_key = get_cache_key(request.message)
+
+    general_coverage = any(
+        word in request.message.lower()
+        for word in [
+            "coverage",
+            "covered",
+            "deductible",
+            "copay",
+            "premium"
+        ]
+    )
+
+    member_specific = any(
+        word in request.message.lower()
+        for word in [
+            "claim",
+            "member",
+            "my claim",
+            "claim id"
+        ]
+    )
+
+    if general_coverage and not member_specific and cache_key in cache:
+        return StreamingResponse(
+            iter([f"data: {cache[cache_key]}\n\n"]),
+            media_type="text/event-stream"
+        )
 
     save_message(
         request.session_id,
@@ -81,15 +171,33 @@ Conversation:
 
         context = retrieve(request.message)
 
+        prompt = (
+            f"Conversation history:\n{history_text}\n\n"
+            f"Context:\n{context}\n\n"
+            f"Question:\n{request.message}"
+        )
+
         def stream():
             answer = ""
 
             for token in generate_answer(
                 request.message,
-                f"Conversation history:\n{history_text}\n\nContext:\n{context}"
+                prompt
             ):
                 answer += token
                 yield f"data: {token}\n\n"
+
+            input_tokens = count_tokens(prompt)
+            output_tokens = count_tokens(answer)
+
+            log_token_usage(
+                request.session_id,
+                input_tokens,
+                output_tokens
+            )
+
+            if general_coverage and not member_specific:
+                cache[cache_key] = answer
 
             save_message(
                 request.session_id,
