@@ -1,0 +1,218 @@
+[
+  {
+    "user_input":"What is the annual deductible for plan GOLD?",
+    "retrieved_contexts":[
+      "('Gold PPO', 2000)\n\n('Silver HMO', 1500)\n\n('Bronze HMO', 1000)"
+    ],
+    "response":"$2,000.",
+    "reference":"The annual deductible for plan GOLD is $2,000.",
+    "faithfulness":0.0,
+    "answer_relevancy":0.3105426534,
+    "context_precision":null,
+    "context_recall":1.0
+  },
+  {
+    "user_input":"How much is the GOLD plan deductible?",
+    "retrieved_contexts":[
+      "('Gold PPO', 2000)\n\n('Silver HMO', 1500)\n\n('Bronze HMO', 1000)"
+    ],
+    "response":"The GOLD plan deductible is $2,000.",
+    "reference":"The annual deductible for plan GOLD is $2,000.",
+    "faithfulness":0.0,
+    "answer_relevancy":0.9756684097,
+    "context_precision":null,
+    "context_recall":1.0
+  },
+  {
+    "user_input":"What is the primary care coverage for plan GOLD?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date."
+    ],
+    "response":"The primary care coverage for the Gold PPO plan is **10% coinsurance after the deductible**.",
+    "reference":"Plan GOLD has primary care coverage at 10% coinsurance after the deductible is met.",
+    "faithfulness":null,
+    "answer_relevancy":0.9228050968,
+    "context_precision":null,
+    "context_recall":1.0
+  },
+  {
+    "user_input":"Is physical therapy covered under plan SILVER?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date."
+    ],
+    "response":"I\u2019m not sure. Please contact support for details about the Silver plan.",
+    "reference":"Yes. Physical therapy is covered under the SILVER plan.",
+    "faithfulness":null,
+    "answer_relevancy":null,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"Is dental surgery covered under plan SILVER?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested."
+    ],
+    "response":"I\u2019m not sure. Please contact your insurance support team for details about dental surgery coverage under the Silver plan.",
+    "reference":"Yes. Dental surgery is covered under the SILVER plan.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"What is the status of claim CLM001?",
+    "retrieved_contexts":[
+      "Review the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date.\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nSample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member."
+    ],
+    "response":"I\u2019m sorry, but I don\u2019t have that information. Please contact your plan\u2019s support team for the status of claim CLM001.",
+    "reference":"Claim CLM001 is approved.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"Has claim CLM001 been approved?",
+    "retrieved_contexts":[
+      "Review the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date.\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nSample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice."
+    ],
+    "response":"I\u2019m sorry, but I don\u2019t have that information. Please contact support for the status of claim CLM001.",
+    "reference":"Yes. Claim CLM001 has been approved.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"Can you give me the status of CLM001?",
+    "retrieved_contexts":[
+      "This synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date.\n\nSample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500"
+    ],
+    "response":"I\u2019m sorry, but I don\u2019t have that information. Please contact your plan\u2019s support team for the status of claim CLM001.",
+    "reference":"The current status of claim CLM001 is Approved.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"What are the details of plan GOLD?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date."
+    ],
+    "response":"**Gold PPO Plan \u2013 Summary of Benefits and Coverage**\n\n- **Plan name:** Gold PPO  \n- **Coverage period:** January\u202f1,\u202f2026\u202f\u2013\u202fDecember\u202f31,\u202f2026  \n- **Monthly premium:** $500  \n- **Annual deductible:** $2,000  \n- **Coinsurance (after deductible):**  \n  - Primary care visit: 10%  \n  - Specialist visit: 10%  \n  - Emergency room: 20%  \n- **Generic prescription copay:** $15  \n- **Annual out\u2011of\u2011pocket maximum:** $6,500  \n\n*Note: This is a synthetic sample for testing\/demonstration only and does not represent a real insurance policy.*",
+    "reference":"Plan GOLD is the Gold PPO. Its annual deductible is $2,000, and primary care coverage is 10% coinsurance after the deductible is met.",
+    "faithfulness":null,
+    "answer_relevancy":0.66739031,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"What type of plan is GOLD?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date."
+    ],
+    "response":"Gold is a **Gold PPO** plan.",
+    "reference":"Plan GOLD is a Gold PPO.",
+    "faithfulness":null,
+    "answer_relevancy":1.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"Compare the information currently available for GOLD and SILVER.",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested."
+    ],
+    "response":"I\u2019m sorry, but I don\u2019t have any information about a Silver plan in the context provided. Please contact support for details on the Silver plan.",
+    "reference":"The available information confirms that GOLD is a Gold PPO with a $2,000 annual deductible and 10% primary care coinsurance after the deductible. The available information confirms that SILVER covers physical therapy and dental surgery. No additional comparison details are provided here.",
+    "faithfulness":0.0,
+    "answer_relevancy":0.5426218708,
+    "context_precision":0.0,
+    "context_recall":0.3333333333
+  },
+  {
+    "user_input":"Which services are excluded from the SILVER plan?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice."
+    ],
+    "response":"I\u2019m sorry, but I don\u2019t have that information. Please contact support for details about the Silver plan\u2019s exclusions.",
+    "reference":"The available information does not specify which services are excluded from the SILVER plan.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"Are there any exclusions listed for plan GOLD?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice."
+    ],
+    "response":"I\u2019m not aware of any exclusions listed for the Gold plan in the information provided. If you need details on exclusions, please contact support.",
+    "reference":"The available information provided here does not specify exclusions for plan GOLD.",
+    "faithfulness":0.0,
+    "answer_relevancy":0.0,
+    "context_precision":0.9999999999,
+    "context_recall":null
+  },
+  {
+    "user_input":"What is an insurance plan?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date."
+    ],
+    "response":"I\u2019m not sure. Please contact support for more information.",
+    "reference":"An insurance plan is an arrangement that specifies covered services, costs such as deductibles or coinsurance, limits, exclusions, and the conditions for receiving coverage.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":null
+  },
+  {
+    "user_input":"Is physical therapy covered under GOLD?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member."
+    ],
+    "response":"I\u2019m not sure. Please contact support for clarification.",
+    "reference":"The available information provided here does not confirm whether physical therapy is covered under GOLD.",
+    "faithfulness":0.0,
+    "answer_relevancy":0.0,
+    "context_precision":null,
+    "context_recall":1.0
+  },
+  {
+    "user_input":"What is the current status of claim CLM999?",
+    "retrieved_contexts":[
+      "Review the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date.\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nSample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member."
+    ],
+    "response":"I\u2019m sorry, but I don\u2019t have that information. Please contact your plan\u2019s support team for the current status of claim CLM999.",
+    "reference":"The available information does not provide the status of claim CLM999.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":0.0,
+    "context_recall":0.0
+  },
+  {
+    "user_input":"Does the SILVER plan cover dental surgery?",
+    "retrieved_contexts":[
+      "Sample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nThis synthetic guide is for software testing and demonstration only and is not legal, medical, or insurance advice.\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested."
+    ],
+    "response":"I\u2019m not sure. The information provided only details the Gold PPO plan and does not mention the Silver plan or dental coverage. Please contact support for clarification.",
+    "reference":"Yes. Dental surgery is covered under the SILVER plan.",
+    "faithfulness":null,
+    "answer_relevancy":0.0,
+    "context_precision":0.0,
+    "context_recall":0.0
+  },
+  {
+    "user_input":"After what condition does GOLD primary care coverage apply at 10% coinsurance?",
+    "retrieved_contexts":[
+      "N\n\no\n\nS\n\nQ\n\nL\n\nt\n\ne\n\nm\n\np\n\nl\n\na\n\nv\n\ni\n\nb\n\nf\n\nr\n\nh\n\ns\n\nq\n\nu\n\nn\n\n.\n\nSample Summary of Benefits and Coverage\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nPlan: Gold PPO\nCoverage period: January 1, 2026 \u2013 December 31, 2026\nCoverage item In-network cost\nMonthly premium $500\nAnnual deductible $2,000\nPrimary care visit 10% coinsurance after deductible\nSpecialist visit 10% coinsurance after deductible\nEmergency room 20% coinsurance after deductible\nGeneric prescription $15 copay\nAnnual out-of-pocket maximum $6,500\n\nAnnual out-of-pocket maximum $6,500\nImportant: This synthetic document is not an insurance policy and does not represent any real insurer or member.\n\nHEALTH PLAN ENROLLMENT FORM\n\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\n\nMember Name:\n\nMember ID:\n\nDate of Birth:\n\nPlan Selected: Gold PPO Silver HMO Bronze HMO\n\nCoverage Start:\n\nPhone:\n\nEmail:\n\nAddress:\n\nAuthorization\n\n| confirm that the information provided on this form is accurate to the best of my knowledge.\n\nSignature:\n\nDate:\n\nReview the claim status periodically. Typical statuses include Pending, Approved, and Denied.\nClaim Review\nThe claims team reviews submitted information, verifies eligibility and coverage, and determines the applicable member responsibility.\nIf a Claim Is Denied\nReview the denial explanation and follow the plan's appeal or reconsideration instructions. Submit supporting documentation when requested.\n\nClaims Process Guide\nSYNTHETIC SAMPLE \u2014 FOR TESTING \/ DEMONSTRATION ONLY\nHow to File a Claim\nCollect the provider bill, receipt, treatment date, procedure details, and member information.\nConfirm that the claim information matches your coverage and provider records.\nSubmit the claim through the designated claims portal or approved paper process.\nKeep a copy of the submitted documents and note the submission date."
+    ],
+    "response":"After the deductible is met.",
+    "reference":"The 10% primary care coinsurance for GOLD applies after the annual deductible has been met.",
+    "faithfulness":1.0,
+    "answer_relevancy":0.5550805753,
+    "context_precision":0.9999999999,
+    "context_recall":1.0
+  }
+]

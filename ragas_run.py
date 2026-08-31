@@ -1,5 +1,11 @@
 import json
+import os
+from ragas.llms import LangchainLLMWrapper
+from dotenv import load_dotenv
 from datasets import Dataset
+from openai import OpenAI
+from langchain_openai import ChatOpenAI
+from retrieval_engine import retrieve
 from ragas import evaluate
 from ragas.metrics import (
     faithfulness,
@@ -7,9 +13,18 @@ from ragas.metrics import (
     context_precision,
     context_recall,
 )
+from ragas.embeddings import LangchainEmbeddingsWrapper
+from langchain_huggingface import HuggingFaceEmbeddings
+
+load_dotenv()
 
 INPUT_FILE = "ragas_eval_set.jsonl"
 OUTPUT_FILE = "ragas_results.json"
+
+client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.environ["GROQ_API_KEY"]
+)
 
 
 def load_eval_set():
@@ -23,16 +38,42 @@ def load_eval_set():
     return rows
 
 
-def run_rag_pipeline(question):
-    # Replace this function with the project's retrieve() + generate_answer()
-    # calls when running against the live RAG pipeline.
-    context = (
-        "Insurance policy context for the requested question. "
-        "The evaluation harness records the retrieved context here."
+def generate_answer(question, context):
+    prompt = f"""
+Answer using ONLY the context below.
+
+If the answer isn't in the context, say you don't know
+and suggest the member contact support.
+
+This is not medical advice.
+
+Context:
+{context}
+
+Question:
+{question}
+"""
+
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-20b",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0
     )
 
-    answer = (
-        "Answer generated from the retrieved insurance policy context."
+    return response.choices[0].message.content
+
+
+def run_rag_pipeline(question):
+    context = retrieve(question)
+
+    answer = generate_answer(
+        question,
+        context
     )
 
     return context, answer
@@ -43,7 +84,9 @@ def main():
     rows = []
 
     for item in records:
-        context, answer = run_rag_pipeline(item["question"])
+        context, answer = run_rag_pipeline(
+            item["question"]
+        )
 
         rows.append({
             "question": item["question"],
@@ -54,22 +97,42 @@ def main():
 
     dataset = Dataset.from_list(rows)
 
+    evaluator_llm = LangchainLLMWrapper(
+    ChatOpenAI(
+        model="openai/gpt-oss-20b",
+        base_url="https://api.groq.com/openai/v1",
+        api_key=os.environ["GROQ_API_KEY"],
+        temperature=0,
+    )
+)
+    evaluator_embeddings = LangchainEmbeddingsWrapper(
+    HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+)
+
     result = evaluate(
-        dataset,
-        metrics=[
-            faithfulness,
-            answer_relevancy,
-            context_precision,
-            context_recall,
-        ],
+    dataset,
+    metrics=[
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
+    ],
+    llm=evaluator_llm,
+    embeddings=evaluator_embeddings
+)
+
+    result_df = result.to_pandas()
+
+    result_df.to_json(
+        OUTPUT_FILE,
+        orient="records",
+        indent=2
     )
 
-    print(result)
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(result.to_pandas().to_dict(orient="records"), f, indent=2)
-
-    print(f"Saved RAGAS results to {OUTPUT_FILE}")
+    print(result_df)
+    print(f"\nSaved results to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":

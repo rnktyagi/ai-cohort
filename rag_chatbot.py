@@ -1,7 +1,6 @@
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-from retrieval_engine import retrieve
 
 load_dotenv()
 
@@ -10,7 +9,7 @@ client = OpenAI(
     api_key=os.environ["GROQ_API_KEY"]
 )
 
-def generate_answer(question, context, chunk_ids):
+def generate_answer(question, context, chunk_ids=None):
     prompt = f"""
 Answer using ONLY the context below.
 If the answer isn't in the context, say you don't know and suggest the member contact support.
@@ -45,8 +44,7 @@ Question: {question}
     return chunk_ids
 
 def retrieve_and_answer(question):
-    context = retrieve(question)
-    answer = generate_answer(question, context)
+    answer = generate_answer(question)
 
     for token in answer:
         print(token, end="", flush=True)

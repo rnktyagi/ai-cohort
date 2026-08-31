@@ -58,7 +58,7 @@ if prompt:
         try:
             with st.spinner("Thinking..."):
                 response = requests.post(
-                    "http://127.0.0.1:8000/chat",
+                    "http://backend:8000/chat",
                     json={
                         "session_id": st.session_state.session_id,
                         "member_id": "M-1001",
