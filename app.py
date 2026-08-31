@@ -11,7 +11,7 @@ if "session_id" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-conn = sqlite3.connect("../coverage.db")
+conn = sqlite3.connect("coverage.db")
 cursor = conn.cursor()
 cursor.execute("SELECT plan_name FROM plans")
 plans = [row[0] for row in cursor.fetchall()]

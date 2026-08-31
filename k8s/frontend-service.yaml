@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    app: my-first-app
+    component: frontend
+spec:
+  type: NodePort
+  selector:
+    app: my-first-app
+    component: frontend
+  ports:
+    - name: http
+      port: 8501
+      targetPort: 8501
+      nodePort: 30080
+      protocol: TCP

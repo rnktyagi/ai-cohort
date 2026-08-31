@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: my-first-app
+    component: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-first-app
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: my-first-app
+        component: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: my-first-app-frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8501
+          envFrom:
+            - secretRef:
+                name: my-first-app-secret
+          readinessProbe:
+            tcpSocket:
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

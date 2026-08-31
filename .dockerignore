@@ -4,3 +4,12 @@ __pycache__
 .git
 .gitignore
 .env
+
+fine_tuned_model
+fine_tune
+embeddings.npy
+embeddings_2d.png
+notebooks
+
+ragas_results.json
+*.md
