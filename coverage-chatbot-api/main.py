@@ -6,6 +6,9 @@ from rag_chatbot import generate_answer
 from memory.memory import save_message, get_history
 from guardrails_config import check_input
 from token_utils import count_tokens
+
+from langfuse import get_client, propagate_attributes
+
 import csv
 from datetime import datetime
 import hashlib
@@ -14,6 +17,8 @@ import time
 
 app = FastAPI(title="FastAPI Health API")
 
+langfuse = get_client()
+
 sessions = {}
 cache = {}
 rate_limits = {}
@@ -21,21 +26,26 @@ rate_limits = {}
 MAX_REQUESTS = 10
 WINDOW_SECONDS = 60
 
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
 
 class ChatRequest(BaseModel):
     session_id: str
     member_id: str
     message: str
 
+
 def normalize_question(question):
     return re.sub(r"\s+", " ", question.strip().lower())
+
 
 def get_cache_key(question):
     normalized = normalize_question(question)
     return hashlib.sha256(normalized.encode()).hexdigest()
+
 
 def check_rate_limit(member_id):
     now = time.time()
@@ -53,8 +63,8 @@ def check_rate_limit(member_id):
         return False
 
     rate_limits[member_id].append(now)
-
     return True
+
 
 def log_token_usage(session_id, input_tokens, output_tokens):
     input_rate = 0.001
@@ -67,7 +77,6 @@ def log_token_usage(session_id, input_tokens, output_tokens):
 
     with open("token_usage.csv", "a", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
-
         writer.writerow([
             session_id,
             datetime.now().isoformat(),
@@ -75,6 +84,47 @@ def log_token_usage(session_id, input_tokens, output_tokens):
             output_tokens,
             estimated_cost
         ])
+
+
+def traced_generate_answer(question, context, session_id, member_id, name):
+    """
+    Wrap the existing streaming LLM call in a Langfuse generation observation.
+    The actual provider call remains inside rag_chatbot.generate_answer().
+    """
+    answer = ""
+
+    with propagate_attributes(
+        user_id=member_id,
+        session_id=session_id,
+        metadata={"service": "coverage-chatbot-api"},
+    ):
+        with langfuse.start_as_current_observation(
+            as_type="generation",
+            name=name,
+            model="openai/gpt-oss-20b",
+            input={
+                "question": question,
+                "context": context,
+            },
+        ) as generation:
+            try:
+                for token in generate_answer(question, context):
+                    answer += token
+                    yield token
+
+                generation.update(
+                    output=answer,
+                    metadata={"output_tokens": count_tokens(answer)},
+                )
+            except Exception as exc:
+                generation.update(
+                    output={"error": str(exc)},
+                    metadata={"status": "error"},
+                )
+                raise
+            finally:
+                langfuse.flush()
+
 
 @app.post("/chat")
 def chat(request: ChatRequest):
@@ -95,7 +145,6 @@ def chat(request: ChatRequest):
         }
 
     session = sessions[request.session_id]
-
     cache_key = get_cache_key(request.message)
 
     general_coverage = any(
@@ -158,7 +207,13 @@ Conversation:
 
             summary = ""
 
-            for token in generate_answer("", summary_prompt):
+            for token in traced_generate_answer(
+                "",
+                summary_prompt,
+                request.session_id,
+                request.member_id,
+                "conversation-summary",
+            ):
                 summary += token
 
             history_text = (
@@ -180,9 +235,12 @@ Conversation:
         def stream():
             answer = ""
 
-            for token in generate_answer(
+            for token in traced_generate_answer(
                 request.message,
-                prompt
+                prompt,
+                request.session_id,
+                request.member_id,
+                "coverage-answer",
             ):
                 answer += token
                 yield f"data: {token}\n\n"
@@ -219,6 +277,7 @@ Conversation:
         return {
             "error": "Unable to generate an answer."
         }
+
 
 @app.get("/history/{session_id}")
 def get_session_history(session_id: str):
